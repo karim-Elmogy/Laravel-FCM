@@ -1,6 +1,6 @@
 <?php
 
-namespace laravel\fcm;
+namespace firebase\fcm;
 
 
 
