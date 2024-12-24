@@ -1,6 +1,6 @@
 <?php
 
-namespace firebase\fcm;
+namespace elmogy\fcm;
 
 
 

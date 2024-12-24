@@ -1,5 +1,5 @@
 {
-    "name": "firebase/fcm",
+    "name": "elmogy/fcm",
     "description": "A Laravel package for FCM (Firebase Cloud Messaging) integration.",
     "type": "library",
     "license": "MIT",
@@ -11,13 +11,13 @@
     },
     "autoload": {
         "psr-4": {
-            "firebase\\fcm\\": "src/"
+            "elmogy\\fcm\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "firebase\\fcm\\FCMServiceProvider"
+                "elmogy\\fcm\\FCMServiceProvider"
             ]
         }
     }
