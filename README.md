@@ -1,53 +1,29 @@
 ![alt tag](https://www.gstatic.com/devrel-devsite/prod/v5ab6fd0ad9c02b131b4d387b5751ac2c3616478c6dd65b5e931f0805efa1009c/firebase/images/lockup.svg)
 
 # elmogy/fcm
-This Laravel package facilitates easy integration with the Thawani payment gateway, offering a straightforward and intuitive set of functionalities for payment session creation, customer management, and transaction handling, all within your Laravel application.
+A Laravel package for FCM (Firebase Cloud Messaging) integration . 
 
 # Features
 * Easy integration with Laravel applications
-* Support for creating and managing Thawani checkout sessions
-* Customer management utilities
-* Payment and refund handling
-* Support for payment intents
 
 **Requirements**
-* PHP 7.3 or higher
-* Laravel 6.0 or higher
+* PHP 8.0 
+* apiclient ^2.0
 
 ## Installation
 ```bash
-composer require jkbroot/thawani
+composer require elmogy/fcm
 ```
-This package supports Package Auto-Discovery, which was introduced in Laravel 5.5. Therefore, it doesn't require manual registration of the ServiceProvider in most cases.
 
-If you're using a version of Laravel where auto-discovery is not supported or have specifically disabled it, you need to register the ServiceProvider manually.
-
-Add the ServiceProvider to the providers array in config/app.php:
-
-```php
-
-'providers' => [
-    // Other Service Providers
-
-    Jkbroot\Thawani\ThawaniServiceProvider::class,
-],
-
-```
 
 **Configuration:** 
 
-Publish the configuration file by running the following Artisan command. This will publish the Thawani configuration file to config/thawani.php, where you can customize your settings.
-
-```bash
-php artisan vendor:publish --tag=config
-```
 _Copy the Thawani Pay configuration snippet you provided and paste it into your .env file. However,The THAWANI_MODE should be set to live instead of test for a production environment :_
 ```
-#Thawani Pay Configuration for Production Environment
-THAWANI_LIVE_SECRET_KEY=your_thawani_live_secret_key
-THAWANI_LIVE_PUBLISHABLE_KEY=your_thawani_live_publishable_key
-#Thawani mode change to (live) for production.
-THAWANI_MODE=test
+# Elmogy Fcm Configuration for Production Environment
+FIREBASE_PROJECT_ID=YOUR_PROJECT_ID
+FIREBASE_FILE=FIREBASE_FILE
+
 ```
 Replace your_thawani_live_secret_key and your_thawani_live_publishable_key with your actual Thawani live secret and publishable keys.
 
