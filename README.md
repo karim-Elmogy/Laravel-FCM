@@ -1,6 +1,6 @@
 ![alt tag](https://www.gstatic.com/devrel-devsite/prod/v5ab6fd0ad9c02b131b4d387b5751ac2c3616478c6dd65b5e931f0805efa1009c/firebase/images/lockup.svg)
 
-# jkbroot/thawani
+# elmogy/fcm
 This Laravel package facilitates easy integration with the Thawani payment gateway, offering a straightforward and intuitive set of functionalities for payment session creation, customer management, and transaction handling, all within your Laravel application.
 
 # Features
