@@ -60,6 +60,6 @@ This creates an instance of the FCM class, allowing you to utilize its methods a
     $body = "This is a test message.";
 
     $response = $fcmService->sendFCM($fcmToken, $title, $body);
-    dd($response);
+   
 
 ```
