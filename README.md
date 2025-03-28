@@ -12,7 +12,7 @@ A Laravel package for FCM (Firebase Cloud Messaging) integration .
 
 ## Installation
 ```bash
-composer require elmogy/fcm
+  composer require elmogy/fcm:dev-main
 ```
 
 
