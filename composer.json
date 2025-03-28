@@ -6,6 +6,7 @@
     "minimum-stability": "dev",
     "require": {
         "google/apiclient": "^2.0",
+        "illuminate/support": "^9.0 || ^12.0",
         "php": ">=8.0"
     },
     "autoload": {
