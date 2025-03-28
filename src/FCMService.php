@@ -36,14 +36,15 @@ class FCMService
      * @param string $fcmToken The device FCM token.
      * @param string $title The notification title.
      * @param string $body The notification body.
+     * @param array $data The notification anther data.
      * @return array The response data.
      */
-    public function sendFCM(string $fcmToken, string $title, string $body): array
+    public function sendFCM(string $fcmToken, string $title, string $body , array $data = null): array
     {
         try {
             $accessToken = $this->getAccessToken();
 
-            $payload = $this->preparePayload($fcmToken, $title, $body);
+            $payload = $this->preparePayload($fcmToken, $title, $body , $data);
 
             $response = $this->sendRequest($accessToken, $payload);
 
@@ -87,9 +88,10 @@ class FCMService
      * @param string $fcmToken
      * @param string $title
      * @param string $body
+     * @param array $data
      * @return array
      */
-    protected function preparePayload(string $fcmToken, string $title, string $body): array
+    protected function preparePayload(string $fcmToken, string $title, string $body , array $data = null): array
     {
         return [
             "message" => [
@@ -98,6 +100,7 @@ class FCMService
                     "title" => $title,
                     "body" => $body,
                 ],
+                "data" =>$data ?? [],
             ],
         ];
     }
