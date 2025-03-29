@@ -4,6 +4,16 @@
     "type": "library",
     "license": "MIT",
     "minimum-stability": "dev",
+    "support": {
+        "issues": "https://github.com/karim-Elmogy/Laravel-FCM/issues",
+        "source": "https://github.com/karim-Elmogy/Laravel-FCM"
+    },
+    "authors": [
+        {
+            "name": "Karim Elmogy",
+            "email": "kimo72636@gmail.com"
+        }
+    ],
     "require": {
         "google/apiclient": "^2.0",
         "illuminate/support": "^9.0 || ^12.0",
