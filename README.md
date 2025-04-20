@@ -56,9 +56,9 @@ This creates an instance of the FCM class, allowing you to utilize its methods a
     $fcmService = new FCMService();
 
     $fcmToken = "DEVICE_TOKEN"; // Replace with the actual FCM token
-    $title = "Test Notification";
-    $body = "This is a test message.";
-    $data = " ['key' => 'value']"; // Optional
+    $title    = "Test Notification";
+    $body     = "This is a test message.";
+    $data     = ['key' => 'value'] ; // Optional
 
     $response = $fcmService->sendFCM($fcmToken, $title, $body , $data);
    

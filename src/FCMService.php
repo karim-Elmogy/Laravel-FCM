@@ -39,7 +39,7 @@ class FCMService
      * @param array $data The notification anther data.
      * @return array The response data.
      */
-    public function sendFCM(string $fcmToken, string $title, string $body , array $data = null): array
+    public function sendFCM(string $fcmToken, string $title, string $body , array $data = []): array
     {
         try {
             $accessToken = $this->getAccessToken();
@@ -91,18 +91,26 @@ class FCMService
      * @param array $data
      * @return array
      */
-    protected function preparePayload(string $fcmToken, string $title, string $body , array $data = null): array
+    protected function preparePayload(string $fcmToken, string $title, string $body , array $data = []): array
     {
-        return [
-            "message" => [
-                "token" => $fcmToken,
-                "notification" => [
-                    "title" => $title,
-                    "body" => $body,
-                ],
-                "data" =>$data ?? [],
+        $message = [
+            "token" => $fcmToken,
+            "notification" => [
+                "title" => $title,
+                "body" => $body,
             ],
         ];
+
+        if (!empty($data)) {
+            // Check if $data is associative
+            if (array_values($data) === $data) {
+                throw new \InvalidArgumentException('FCM "data" must be an associative array.');
+            }
+
+            $message["data"] = $data;
+        }
+
+        return ["message" => $message];
     }
 
     /**
