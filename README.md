@@ -18,9 +18,8 @@ composer require elmogy/fcm
 
 **Configuration:** 
 
-_Copy the Thawani Pay configuration snippet you provided and paste it into your .env file. However,The THAWANI_MODE should be set to live instead of test for a production environment :_
 ```
-# Elmogy Fcm Configuration for Production Environment
+# Elmogy Fcm Configuration for Production Environment (.env)
 FIREBASE_PROJECT_ID=YOUR_PROJECT_ID
 FIREBASE_FILE=FIREBASE_FILE
 
@@ -58,9 +57,10 @@ This creates an instance of the FCM class, allowing you to utilize its methods a
     $fcmToken = "DEVICE_TOKEN"; // Replace with the actual FCM token
     $title    = "Test Notification";
     $body     = "This is a test message.";
+    $icon     = "/default.png"; // Optional
     $data     = ['key' => 'value'] ; // Optional
 
-    $response = $fcmService->sendFCM($fcmToken, $title, $body , $data);
+    $response = $fcmService->sendFCM($fcmToken, $title, $body , $icon ,$data);
    
 
 ```

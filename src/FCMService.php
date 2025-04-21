@@ -36,15 +36,16 @@ class FCMService
      * @param string $fcmToken The device FCM token.
      * @param string $title The notification title.
      * @param string $body The notification body.
+     * @param string $icon The Icon notification.
      * @param array $data The notification anther data.
      * @return array The response data.
      */
-    public function sendFCM(string $fcmToken, string $title, string $body , array $data = []): array
+    public function sendFCM(string $fcmToken, string $title, string $body , string $icon = null ,array $data = []): array
     {
         try {
             $accessToken = $this->getAccessToken();
 
-            $payload = $this->preparePayload($fcmToken, $title, $body , $data);
+            $payload = $this->preparePayload($fcmToken, $title, $body , $icon , $data);
 
             $response = $this->sendRequest($accessToken, $payload);
 
@@ -91,7 +92,7 @@ class FCMService
      * @param array $data
      * @return array
      */
-    protected function preparePayload(string $fcmToken, string $title, string $body , array $data = []): array
+    protected function preparePayload(string $fcmToken, string $title, string $body , string $icon = null ,array $data = []): array
     {
         $message = [
             "token" => $fcmToken,
@@ -100,6 +101,16 @@ class FCMService
                 "body" => $body,
             ],
         ];
+
+        if (!empty('icon')) {
+            $icon= [
+                "notification" => [
+                    "icon" => url($icon),
+                ]
+            ];
+
+            $message["webpush"] = $icon;
+        }
 
         if (!empty($data)) {
             // Check if $data is associative
