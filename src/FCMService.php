@@ -23,7 +23,7 @@ class FCMService
      */
     protected function setCredentialsFilePath()
     {
-        $isLocalEnvironment = request()->root() === 'http://127.0.0.1:8000' || 'http://localhost:8000';
+        $isLocalEnvironment = in_array(request()->root(), ['http://127.0.0.1:8000', 'http://localhost:8000']);
 
         $this->credentialsFilePath = $isLocalEnvironment
             ? env('FIREBASE_FILE') // Local path
@@ -102,14 +102,29 @@ class FCMService
             ],
         ];
 
-        if (!empty('icon')) {
-            $icon= [
+        if (!empty($icon)) {
+            $iconUrl = url($icon);
+
+            // Web push
+            $message["webpush"] = [
                 "notification" => [
-                    "icon" => url($icon),
+                    "icon" => $iconUrl,
                 ]
             ];
 
-            $message["webpush"] = $icon;
+            // Android push
+            $message["android"] = [
+                "notification" => [
+                    "image" => $iconUrl,
+                ]
+            ];
+
+            // iOS push (APNs) via image (icon غير مدعوم بشكل مباشر)
+            $message["apns"] = [
+                "fcm_options" => [
+                    "image" => $iconUrl,
+                ]
+            ];
         }
 
         if (!empty($data)) {
